@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$filename = md5(time().$_SERVER['REMOTE_ADDR']);
 		$data = $uploader->upload($_FILES['files'], array(
 			'limit' => 1, //Maximum Limit of files. {null, Number}
-			'maxSize' => 5, //Maximum Size of files {null, Number(in MB's)}
+			'maxSize' => 1, //Maximum Size of files {null, Number(in MB's)}
 			'extensions' => array('jpg', 'jpeg', 'png', 'gif'), //Whitelist for file extension. {null, Array(ex: array('jpg', 'png'))}
 			'required' => false, //Minimum one file is required for upload {Boolean}
 			'uploadDir' => $uploadDir, //Upload directory {String}

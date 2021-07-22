@@ -37,6 +37,8 @@ Contents
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 **Changes introduced in 0.3.17
+[Enhance]	Increased maximum backup upload size to 10MB
+[Enhance]	Decreased maximum image upload size to 1MB
 [Fix]		Port description field spins after edit
 
 **Changes introduced in 0.3.16

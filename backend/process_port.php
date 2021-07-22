@@ -76,6 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			
 				$descriptionNew = $data['value'];
 				$portName = $qls->App->generateObjectPortName($objID, $objFace, $objDepth, $portID);
+				$actionTaken = true;
 			
 				// Store original description
 				if(isset($qls->App->portDescriptionArray[$objID][$objFace][$objDepth][$portID])) {
@@ -95,34 +96,37 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 						$actionVerb = 2;
 						$actionString = 'Changed port description: <strong>'.$portName.'</strong> - from <strong>'.$descriptionOrig.'</strong> to <strong>'.$descriptionNew.'</strong>';
 					}
-				} else {
+				} else if($descriptionNew != '') {
 				
-					if($descriptionNew != '') {
-						// Write new description
-						$qls->SQL->insert(
-							'app_port_description',
-							array(
-								'object_id',
-								'object_face',
-								'object_depth',
-								'port_id',
-								'description'
-							),
-							array(
-								$objID,
-								$objFace,
-								$objDepth,
-								$portID,
-								$descriptionNew
-							)
-						);
-						
-						$actionVerb = 1;
-						$actionString = 'Added port description: <strong>'.$portName.'</strong> - <strong>'.$descriptionNew.'</strong>';
-					}
+					// Write new description
+					$qls->SQL->insert(
+						'app_port_description',
+						array(
+							'object_id',
+							'object_face',
+							'object_depth',
+							'port_id',
+							'description'
+						),
+						array(
+							$objID,
+							$objFace,
+							$objDepth,
+							$portID,
+							$descriptionNew
+						)
+					);
+					
+					$actionVerb = 1;
+					$actionString = 'Added port description: <strong>'.$portName.'</strong> - <strong>'.$descriptionNew.'</strong>';
+				} else {
+					$actionTaken = false;
 				}
 				
-				$qls->App->logAction(3, $actionVerb, $actionString);
+				if($actionTaken) {
+					$qls->App->logAction(3, $actionVerb, $actionString);
+				}
+				
 				break;
 		}
 	}

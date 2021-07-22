@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$filename = md5(time().$_SERVER['REMOTE_ADDR']);
 		$data = $uploader->upload($_FILES['files'], array(
 			'limit' => 1, //Maximum Limit of files. {null, Number}
-			'maxSize' => 2, //Maximum Size of files {null, Number(in MB's)}
+			'maxSize' => 10, //Maximum Size of files {null, Number(in MB's)}
 			'extensions' => array('zip'), //Whitelist for file extension. {null, Array(ex: array('jpg', 'png'))}
 			'required' => false, //Minimum one file is required for upload {Boolean}
 			'uploadDir' => $_SERVER['DOCUMENT_ROOT'].'/userUploads/', //Upload directory {String}
