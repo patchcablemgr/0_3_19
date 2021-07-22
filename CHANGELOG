@@ -5,6 +5,7 @@ ChangeLog for PatchCableMgr
 ****************************************************
 
 Contents
+	- Changes Introduced In 0.3.17
 	- Changes Introduced In 0.3.16
 	- Changes Introduced In 0.3.15
 	- Changes Introduced In 0.3.14
@@ -34,6 +35,9 @@ Contents
 
 ****************************************************
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+**Changes introduced in 0.3.17
+[Fix]		Port description field spins after edit
 
 **Changes introduced in 0.3.16
 [Feature]	Port description
