@@ -1198,7 +1198,7 @@ function validateImportedPaths($importedPathArray, $importedCabinetArray, &$vali
 			// Validate Cabinet Name
 			$cabinetNameArray = explode('.', $cabinetName);
 			foreach($cabinetNameArray as $cabinetNameFragment) {
-				$validate->validateNameText($cabinetNameFragment, ucfirst($column).' name '.$cabinetNameFragment.' on line '.$cabinetLine.' of "'.$cabinetFilename.'".');
+				$validate->validateNameText($cabinetNameFragment, ucfirst($column).' name '.$cabinetNameFragment.' on line '.$csvLineNumber.' of "'.$csvFilename.'".');
 			}
 			
 			// Cabinet Name Must Exist in Imported Cabinet Array
@@ -1209,10 +1209,10 @@ function validateImportedPaths($importedPathArray, $importedCabinetArray, &$vali
 		}
 		
 		// Validate Path Distance
-		$validate->validateDistance($distance, 'Path distance on line '.$cabinetLine.' of '.$cabinetFilename);
+		$validate->validateDistance($distance, 'Path distance on line '.$csvLineNumber.' of '.$csvFilename);
 		
 		// Validate Path Notes
-		$validate->validateText($notes, 'Path notes on line '.$cabinetLine.' of '.$cabinetFilename);
+		$validate->validateText($notes, 'Path notes on line '.$csvLineNumber.' of '.$csvFilename);
 		
 	}
 }
@@ -1229,7 +1229,7 @@ function validateImportedCategories($importedCategoryArray, $existingCategoryArr
 		$csvLineNumber = $category['line'];
 		
 		// Validate Category Name
-		$validate->validateNameText($categoryName, 'Category name on line '.$cabinetLine.' of "'.$cabinetFilename.'".');
+		$validate->validateNameText($categoryName, 'Category name on line '.$csvLineNumber.' of "'.$csvFilename.'".');
 		
 		// Validate Category Color
 		$validate->validateCategoryColor($categoryColor);

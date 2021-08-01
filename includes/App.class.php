@@ -249,7 +249,7 @@ var $qls;
 		$query = $qls->SQL->select('*', 'shared_cable_connectorType');
 		while ($row = $qls->SQL->fetch_assoc($query)) {
 			if(strtolower($row['name']) != 'label') {
-				$this->connectorTypeArray[$row['id']] = $row['name'];
+				$this->connectorTypeArray[$row['value']] = $row['name'];
 				$this->connectorTypeValueArray[$row['value']] = $row;
 			}
 		}

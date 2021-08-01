@@ -5,6 +5,7 @@ ChangeLog for PatchCableMgr
 ****************************************************
 
 Contents
+	- Changes Introduced In 0.3.18
 	- Changes Introduced In 0.3.17
 	- Changes Introduced In 0.3.16
 	- Changes Introduced In 0.3.15
@@ -35,6 +36,13 @@ Contents
 
 ****************************************************
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+**Changes introduced in 0.3.17
+[Fix]		Error when configuring managed cable connector type as ST
+
+**Changes introduced in 0.3.17
+[Fix]		Backup export not converting HTML code to ASCII hyphen
+[Fix]		Import function not reporting line or filename in error messages
 
 **Changes introduced in 0.3.17
 [Enhance]	Increased maximum backup upload size to 10MB

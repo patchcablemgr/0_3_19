@@ -248,8 +248,8 @@ function createCablePaths(&$qls){
 	while($row = $qls->SQL->fetch_assoc($query)) {
 		if($row['cabinet_b_id'] != 0) {
 			$line = array(
-				$qls->App->envTreeArray[$row['cabinet_a_id']]['nameString'],
-				$qls->App->envTreeArray[$row['cabinet_b_id']]['nameString'],
+				$qls->App->unConvertHyphens($qls->App->envTreeArray[$row['cabinet_a_id']]['nameString']),
+				$qls->App->unConvertHyphens($qls->App->envTreeArray[$row['cabinet_b_id']]['nameString']),
 				$row['distance']*.001,
 				$row['notes']
 			);
