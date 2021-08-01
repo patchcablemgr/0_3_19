@@ -39,6 +39,7 @@ Contents
 
 **Changes introduced in 0.3.17
 [Fix]		Error when configuring managed cable connector type as ST
+[Enhance]	Added ability to delete managed cable from Cable Inventory
 
 **Changes introduced in 0.3.17
 [Fix]		Backup export not converting HTML code to ASCII hyphen

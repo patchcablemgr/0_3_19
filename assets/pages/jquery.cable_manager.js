@@ -32,10 +32,52 @@ $( document ).ready(function() {
 		var action = $(linkEditable).attr('data-action');
 		var cableID = $(linkEditable).attr('data-cableID');
 		
-		var data = {
-			cableID: cableID,
-			action: action
+		if(action == 'delete') {
+			
+			$(document).data('selectedCableID', cableID);
+			
+			$('#modalConfirmTitle').html('Delete Cable');
+			$('#modalConfirmBody').html('Delete cable?');
+			
+		} else {
+			var data = {
+				cableID: cableID,
+				action: action
+			}
+			data = JSON.stringify(data);
+			
+			$.post("backend/process_cable-editable.php", {data:data}, function(response){
+				var responseJSON = JSON.parse(response);
+				if (responseJSON.active == 'inactive'){
+					window.location.replace("/");
+				} else if ($(responseJSON.error).size() > 0){
+					displayError(responseJSON.error);
+				} else {
+					
+					if(action == 'lock') {
+						$(linkEditable).html('<i class="fa fa-lock"></i>');
+						$(linkEditable).attr('data-action', 'unlock');
+						$(linkEditable).attr('title', 'Unlock cable for editing');
+						
+					} else if(action == 'unlock') {
+						$(linkEditable).html('<i class="fa fa-unlock"></i>');
+						$(linkEditable).attr('data-action', 'lock');
+						$(linkEditable).attr('title', 'Lock cable for editing');
+					}
+				}
+			});
 		}
+	});
+	
+	// Delete a temlate
+	$('#modalConfirmBtn').click(function(){
+		var selectedCableID = $(document).data('selectedCableID');
+		
+		var data = {
+			cableID: selectedCableID,
+			action: 'delete'
+		}
+		
 		data = JSON.stringify(data);
 		
 		$.post("backend/process_cable-editable.php", {data:data}, function(response){
@@ -45,22 +87,8 @@ $( document ).ready(function() {
 			} else if ($(responseJSON.error).size() > 0){
 				displayError(responseJSON.error);
 			} else {
-				var pill = $(linkEditable).siblings('.label-pill');
 				
-				if(action == 'finalize') {
-					$(pill).removeClass('label-danger').addClass('label-success');
-					$(pill).html('Yes');
-					$(linkEditable).html('unFinalize');
-					$(linkEditable).attr('data-action', 'unfinalize');
-					$(linkEditable).attr('title', 'Allow cable properties to be edited.');
-					
-				} else if(action == 'unfinalize') {
-					$(pill).removeClass('label-success').addClass('label-danger');
-					$(pill).html('No');
-					$(linkEditable).html('Finalize');
-					$(linkEditable).attr('data-action', 'finalize');
-					$(linkEditable).attr('title', 'Remove the ability to edit cable properties.');
-				}
+				$('#'+selectedCableID).remove();
 			}
 		});
 	});

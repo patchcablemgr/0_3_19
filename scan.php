@@ -78,7 +78,7 @@ $qls->Security->check_auth_page('operator.php');
 								</table>
 								<button id="buttonFinalize" type="button" class="btn btn-success waves-effect waves-light m-t-10" style="display:none;" disabled>
 									<span class="btn-label"><i class="fa fa-check"></i></span>
-									Finalize*
+									Lock*
 								</button>
 							</blockquote>
 						</div>

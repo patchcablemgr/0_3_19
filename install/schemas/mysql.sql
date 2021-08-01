@@ -544,5 +544,6 @@ CREATE TABLE `{database_prefix}app_port_description` (
   `object_face` int(11) NOT NULL,
   `object_depth` int(11) NOT NULL,
   `port_id` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
   PRIMARY KEY(`id`)
 );

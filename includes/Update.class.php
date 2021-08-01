@@ -128,6 +128,14 @@ var $qls;
 		// Set app version to 0.3.18
 		$this->qls->SQL->update('app_organization_data', array('version' => $incrementalVersion), array('id' => array('=', 1)));
 		
+		// Fix port description table
+		$query = $this->qls->SQL->query("SHOW COLUMNS FROM `{$this->qls->config['sql_prefix']}app_port_description` LIKE 'description'");
+		if(!$this->qls->SQL->num_rows($query)) {
+			
+			// Add description column
+			$this->qls->SQL->alter('app_port_description', 'add', 'description', 'varchar(255)');
+		}
+		
 	}
 	
 	/**
