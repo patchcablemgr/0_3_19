@@ -38,6 +38,7 @@ Contents
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 **Changes introduced in 0.3.17
+[Fix]		Port description field spins after edit
 [Fix]		Error when configuring managed cable connector type as ST
 [Enhance]	Added ability to delete managed cable from Cable Inventory
 
