@@ -1,6 +1,6 @@
 {
 	"require": {
-		"sonata-project/google-authenticator": "dev-master",
+		"sonata-project/google-authenticator": "^2.*",
 		"phpmailer/phpmailer": "^6.0",
 		"curl/curl": "^2.0"
 	}
