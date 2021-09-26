@@ -5,6 +5,7 @@ ChangeLog for PatchCableMgr
 ****************************************************
 
 Contents
+	- Changes Introduced In 0.3.19
 	- Changes Introduced In 0.3.18
 	- Changes Introduced In 0.3.17
 	- Changes Introduced In 0.3.16
@@ -37,7 +38,12 @@ Contents
 ****************************************************
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-**Changes introduced in 0.3.17
+**Changes introduced in 0.3.19
+[Fix]		Google authenticator version
+[Fix]		Floorplan object data not displaying
+[Enhance]	Added support for MM-OM1 media type
+
+**Changes introduced in 0.3.18
 [Fix]		Port description field spins after edit
 [Fix]		Error when configuring managed cable connector type as ST
 [Enhance]	Added ability to delete managed cable from Cable Inventory

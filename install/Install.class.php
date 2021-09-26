@@ -37,7 +37,7 @@ class Install {
  * @var string $system_version - The version of the system
  */
 var $system_version = '3.1.11';
-var $app_version = '0.3.18';
+var $app_version = '0.3.19';
 
 /**
  * @var string $install_error - Contains the installation error
@@ -784,7 +784,8 @@ var $install_error = array();
 				"5, 'SM-OS1', '4', 2, 0, 1",
 				"6, 'MM-OM4', '2', 2, 0, 1",
 				"7, 'MM-OM3', '2', 2, 0, 1",
-				"8, 'Unspecified', '5', 4, 0, 0"
+				"8, 'Unspecified', '5', 4, 0, 0",
+				"9, 'MM-OM1', '2', 2, 0, 1"
 			);
 			
 			// Add media type

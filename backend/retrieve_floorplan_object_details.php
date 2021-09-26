@@ -28,32 +28,34 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$peerIDArray = array();
 		$objPortArray = array();
 		if($trunkable) {
+			
 			$trunkFlatPath = isset($qls->App->peerArray[$objectID]) ? 'Yes' : 'No';
 			
-			foreach($qls->App->peerArray[$objectID][0][0]['peerArray'] as $peerID => $peer) {
-				foreach($peer as $peerFace => $face) {
-					foreach($face as $peerDepth => $peerPortArray) {
-						foreach($peerPortArray as $peerEntryID => $peerPort) {
-							$peerTemplateID = $qls->App->objectArray[$peerID]['template_id'];
-							$peerPort = $peerPort[1];
-							$peerCompatibility = $qls->App->compatibilityArray[$peerTemplateID][$peerFace][$peerDepth];
-							$peerPortLayoutX = $peerCompatibility['portLayoutX'];
-							$peerPortLayoutY = $peerCompatibility['portLayoutY'];
-							$peerPortTotal = $peerPortLayoutX * $peerPortLayoutY;
-							$peerPortNameFormatJSON = $peerCompatibility['portNameFormat'];
-							$peerPortNameFormat = json_decode($peerPortNameFormatJSON, true);
-							$peerPortName = $qls->App->generatePortName($peerPortNameFormat, $peerPort, $peerPortTotal);
-							
-							$peerIDValue = '4-'.$peerID.'-'.$peerFace.'-'.$peerDepth.'-'.$peerPort;
-							
-							$objPort = array(
-								//'peerEntryID' => $qls->App->peerArray[$objectID][0][0]['id'],
-								'peerEntryID' => $peerEntryID,
-								'portName' => $peerPortName
-							);
-							
-							array_push($peerIDArray, $peerIDValue);
-							array_push($objPortArray, $objPort);
+			if(isset($qls->App->peerArray[$objectID][0][0]['peerArray'])) {
+				foreach($qls->App->peerArray[$objectID][0][0]['peerArray'] as $peerID => $peer) {
+					foreach($peer as $peerFace => $face) {
+						foreach($face as $peerDepth => $peerPortArray) {
+							foreach($peerPortArray as $peerEntryID => $peerPort) {
+								$peerTemplateID = $qls->App->objectArray[$peerID]['template_id'];
+								$peerPort = $peerPort[1];
+								$peerCompatibility = $qls->App->compatibilityArray[$peerTemplateID][$peerFace][$peerDepth];
+								$peerPortLayoutX = $peerCompatibility['portLayoutX'];
+								$peerPortLayoutY = $peerCompatibility['portLayoutY'];
+								$peerPortTotal = $peerPortLayoutX * $peerPortLayoutY;
+								$peerPortNameFormatJSON = $peerCompatibility['portNameFormat'];
+								$peerPortNameFormat = json_decode($peerPortNameFormatJSON, true);
+								$peerPortName = $qls->App->generatePortName($peerPortNameFormat, $peerPort, $peerPortTotal);
+								
+								$peerIDValue = '4-'.$peerID.'-'.$peerFace.'-'.$peerDepth.'-'.$peerPort;
+								
+								$objPort = array(
+									'peerEntryID' => $peerEntryID,
+									'portName' => $peerPortName
+								);
+								
+								array_push($peerIDArray, $peerIDValue);
+								array_push($objPortArray, $objPort);
+							}
 						}
 					}
 				}

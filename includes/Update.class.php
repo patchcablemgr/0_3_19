@@ -110,12 +110,31 @@ var $qls;
 			$this->update_0316_to_0317();
 		} else if($this->currentVersion == '0.3.17') {
 			$this->update_0317_to_0318();
+		} else if($this->currentVersion == '0.3.18') {
+			$this->update_0318_to_0319();
 		} else {
 			return true;
 		}
 		
 		$this->currentVersion = $this->getVersion();
 		return false;
+	}
+	
+	/**
+	 * Update from version 0.3.18 to 0.3.19
+	 * @return Boolean
+	 */
+	function update_0318_to_0319() {
+		$incrementalVersion = '0.3.19';
+		
+		// Set app version to 0.3.19
+		$this->qls->SQL->update('app_organization_data', array('version' => $incrementalVersion), array('id' => array('=', 1)));
+		
+		// Add media type
+		$mediaTypeColumns = array('value', 'name', 'category_id', 'category_type_id', 'defaultOption', 'display');
+		$mediaTypeValues = array(9, 'MM-OM1', 2, 2, 0, 1);
+		$this->qls->SQL->insert('shared_mediaType', $mediaTypeColumns, $mediaTypeValues);
+		
 	}
 	
 	/**
